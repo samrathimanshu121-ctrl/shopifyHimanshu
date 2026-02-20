@@ -1,14 +1,18 @@
 <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
 
-
- .navbar {
+  .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 40px;
-    background-color: #111;
+    padding: 15px 50px;
+    background: #111;
     color: #fff;
-    font-family: Arial, sans-serif;
   }
 
   .logo {
@@ -23,84 +27,242 @@
     gap: 25px;
   }
 
-  .nav-links li a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 16px;
-    transition: 0.3s;
-  }
-
-  .nav-links li a:hover {
-    color: #ff6f00;
-  }
-
-  .nav-icons a {
-    margin-left: 20px;
-    font-size: 18px;
+  .nav-links a {
     text-decoration: none;
     color: #fff;
     transition: 0.3s;
   }
 
-  .nav-icons a:hover {
+  .nav-links a:hover {
     color: #ff6f00;
   }
+
+  .icons span {
+    margin-left: 15px;
+    cursor: pointer;
+  }
+
   .first-class-section {
     padding: 40px;
-    background: #f5f5f5;
     text-align: center;
+
+    background-color: {
+        {
+        section.settings.background_color
+      }
+    }
+
+    ;
+  }
+
+  .hero {
+    height: 80vh;
+
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) {
+      % if section.settings.background_image !=blank %
+    }
+
+    ,
+    url('{{ section.settings.background_image | image_url: width: 1600 }}') {
+      % endif %
+    }
+
+    ;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+  }
+
+  .hero h1 {
+    font-size: 50px;
+  }
+
+  .hero p {
+    margin: 15px 0;
+    font-size: 18px;
+  }
+
+  .hero button {
+    padding: 12px 25px;
+    background: #ff6f00;
+    border: none;
+    color: #111010;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .hero button:hover {
+    background: #e65c00;
+  }
+
+  .products {
+    padding: 60px 50px;
+    text-align: center;
+  }
+
+  .products h2 {
+    margin-bottom: 40px;
+    font-size: 30px;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+
+  .card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+  }
+
+  .card h3 {
+    margin: 15px 0 10px;
+  }
+
+  .card p {
+    color: #ff6f00;
+    font-weight: bold;
+  }
+
+  .card button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: #111;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .card button:hover {
+    background: #ff6f00;
+  }
+
+  footer {
+    background: #111;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
   }
 </style>
 
-
 <nav class="navbar">
-  <div class="logo">Sam</div>
-
+  <div class="logo">MyStore</div>
   <ul class="nav-links">
     <li><a href="#">Home</a></li>
     <li><a href="#">Shop</a></li>
     <li><a href="#">Categories</a></li>
-    <li><a href="#">Offers</a></li>
     <li><a href="#">Contact</a></li>
   </ul>
-
-  <div class="nav-icons">
-    <a href="#">🔍</a>
-    <a href="#">🛒</a>
-    <a href="#">👤</a>
+  <div class="icons">
+    <span>🔍</span>
+    <span>🛒</span>
+    <span>👤</span>
   </div>
 </nav>
 
-
-
-
 <div class="first-class-section">
   <h1>{{ section.settings.heading_text }}</h1>
-  <h5>  {{  section.settings.paragraph }}</h5>
+  <h5>{{ section.settings.paragraph }}</h5>
+  <p>{{ section.settings.my_number }}</p>
+  <div style="width: 100px; height: 100px; background-color: {{ section.settings.background_color }}; margin: 20px auto;"></div>
+  <div style="width: 200px; height: 200px; background-image: url('{{ section.settings.background_image | image_url: width: 400 }}'); background-size: cover; background-position: center; margin: 20px auto;"></div>
 </div>
+
+<section class="hero">
+  <div>
+    <h1>Big Sale is Live 🔥</h1>
+    <p>Up to 50% Off on All Products</p>
+    <button>Shop Now</button>
+  </div>
+</section>
+
+<section class="products">
+  <h2>Featured Products</h2>
+  <div class="product-grid">
+
+    <div class="card">
+      <h3>Men T-Shirt</h3>
+      <p>₹499</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <h3>Women Dress</h3>
+      <p>₹999</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <h3>Shoes</h3>
+      <p>₹1499</p>
+      <button>Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <h3>Smart Watch</h3>
+      <p>₹1999</p>
+      <button>Add to Cart</button>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 MyStore. All Rights Reserved.</p>
+</footer>
 
 {% schema %}
 {
-  "name": "First Class Section",
-  "settings": [
-    {
-      "type": "text",
-      "id": "heading_text",
-      "label": "Heading Text",
-      "default": "This is a first class section"
-    },
-    {
-      "type": "textarea",
-      "id": "paragraph",
-      "label": " write paragraph",
-      "default":" tell me  about your brand store"
-
-    }
-  ],
-  "presets": [
-    {
-      "name": "First Class Section"
-    }
-  ]
+"name": "First Class Section",
+"settings": [
+{
+"type": "text",
+"id": "heading_text",
+"label": "Heading Text",
+"default": "This is a first class section"
+},
+{
+"type": "textarea",
+"id": "paragraph",
+"label": "Write paragraph",
+"default": "Tell me about your brand store"
+},
+{
+"type": "number",
+"id": "my_number",
+"label": "Select your lucky number",
+"default": 7
+},
+{
+"type": "color",
+"id": "background_color",
+"label": "Background Color",
+"default": "#f5f5f5"
+},
+{
+"type": "image_picker",
+"id": "background_image",
+"label": "Hero Background Image"
+}
+],
+"presets": [
+{
+"name": "First Class Section"
+}
+]
 }
 {% endschema %}
